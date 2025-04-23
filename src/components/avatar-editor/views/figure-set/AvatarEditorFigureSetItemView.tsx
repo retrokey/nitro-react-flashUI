@@ -25,8 +25,8 @@ export const AvatarEditorFigureSetItemView: FC<AvatarEditorFigureSetItemViewProp
     }, [ partItem ]);
 
     return (
-        <div className="avatar-container">
-            <LayoutGridItem className={ `avatar-parts ${ partItem.isSelected ? 'part-selected' : '' }` } itemImage={ (partItem.isClear ? undefined : partItem.imageUrl) } { ...rest }>
+        <div className={ `avatar-container avatar-parts ${ partItem.isSelected ? 'part-selected' : '' }` }>
+            <LayoutGridItem className="avatar-parts-item-container" itemImage={ (partItem.isClear ? undefined : partItem.imageUrl) } { ...rest }>
                 { !hcDisabled && partItem.isHC && <i className="icon hc-icon position-absolute" /> }
                 { partItem.isClear && <AvatarEditorIcon icon="clear" /> }
                 { partItem.isSellable && <AvatarEditorIcon icon="sellable" position="absolute" className="end-1 bottom-1" /> }

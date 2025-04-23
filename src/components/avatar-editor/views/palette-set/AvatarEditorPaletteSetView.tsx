@@ -39,7 +39,6 @@ export const AvatarEditorPaletteSetView: FC<AvatarEditorPaletteSetViewProps> = p
         <AutoGrid
             className="py-1 avatar-editor-palette-set-view"
             innerRef={ elementRef }
-            gap={ 1 }
             columnCount={ 8 }
             columnMinWidth={ 14 }
         >

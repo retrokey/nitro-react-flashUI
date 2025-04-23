@@ -366,8 +366,8 @@
         border-image-source: url(@/assets/flash/avatareditor/color_frame.png);
         border-image-slice: 6 6 6 6 fill;
         border-image-width: 6px 6px 6px 6px;
-        width: 14px;
-        height: 21px;
+        width: 13px;
+        height: 19px;
         border-radius: 4px;
 
         &.active {
@@ -476,6 +476,17 @@
         padding: 3px;
     }
 
+    .avatar-parts-item-container {
+        border: none !important;
+        height: 42px;
+        width: 42px;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 2rem !important;
+        overflow: visible !important;
+        background-color: transparent;
+    }
+
     .avatar-parts {
         border: none !important;
         height: 42px;
@@ -517,6 +528,8 @@
 .avatar-editor-palette-set-view {
     padding-right: 15px !important;
     flex-grow: 1;
+    row-gap: 4px !important;
+    column-gap: 1px !important;
 }
 
 .clothing-container {
