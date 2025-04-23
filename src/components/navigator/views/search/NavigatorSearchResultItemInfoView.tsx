@@ -42,6 +42,36 @@ export const NavigatorSearchResultItemInfoView: FC<NavigatorSearchResultItemInfo
     const { navigatorData = null, favouriteRoomIds = [] } = useNavigator();
     const { report = null } = useHelp();
 
+    useEffect(() =>
+    {
+        if (showProfile)
+        {
+            setIsVisible(false);
+        }
+    }, [ showProfile ]);
+
+    useEffect(() =>
+    {
+        // add when mounted
+        document.addEventListener('mousedown', handleClick);
+        // return function to be called when unmounted
+        return () =>
+        {
+            document.removeEventListener('mousedown', handleClick);
+        };
+    }, []);
+
+    const handleClick = e =>
+    {
+        if (elementRef.current.contains(e.target))
+        {
+            // inside click
+            return;
+        }
+        // outside click
+        setIsVisible(false);
+    };
+
     useEffect(() => 
     {
         // add when mounted
@@ -112,12 +142,12 @@ export const NavigatorSearchResultItemInfoView: FC<NavigatorSearchResultItemInfo
 
     return (
         <>
-            <Base pointer innerRef={ elementRef } className="icon icon-navigator-info" onClick={ event => 
+            <Base pointer innerRef={ elementRef } className="icon icon-navigator-info" onClick={ event =>
             {
                 isVisible ? setIsVisible(false) : setIsVisible(true);
                 event.stopPropagation();
-            } }/>
-            <Overlay show={ isVisible } target={ elementRef.current } placement="right">
+            } } />
+            <Overlay show={ isVisible } target={ elementRef.current } placement="right" >
                 <Popover>
                     <NitroCardContentView onClick={ event => event.stopPropagation() } overflow="hidden" className="room-info bg-transparent">
                         <Flex gap={ 2 } overflow="hidden" className="room-info-bg p-2">

@@ -50,6 +50,7 @@ const useNavigatorState = () =>
     const [ searchResult, setSearchResult ] = useState<NavigatorSearchResultSet>(null);
     const [ navigatorSearches, setNavigatorSearches ] = useState<NavigatorSavedSearch[]>(null);
     const [ favouriteRoomIds, setFavouriteRoomIds ] = useState<number[]>([]);
+
     const [ navigatorData, setNavigatorData ] = useState<INavigatorData>({
         settingsReceived: false,
         homeRoomId: 0,

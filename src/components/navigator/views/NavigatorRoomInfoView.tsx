@@ -94,9 +94,6 @@ export const NavigatorRoomInfoView: FC<NavigatorRoomInfoViewProps> = props =>
                 report(ReportType.ROOM, { roomId: navigatorData.enteredGuestRoom.roomId, roomName: navigatorData.enteredGuestRoom.roomName });
                 onCloseClick();
                 return;
-            case 'set_favourite_room':
-                SendMessageComposer(new AddFavouriteRoomMessageComposer(navigatorData.enteredGuestRoom.roomId));
-                return;
             case 'close':
                 onCloseClick();
                 return;
@@ -131,6 +128,9 @@ export const NavigatorRoomInfoView: FC<NavigatorRoomInfoViewProps> = props =>
                                     <Column grow gap={ 1 }>
                                         <Flex gap={ 1 }>
                                             <Text bold>{ navigatorData.enteredGuestRoom.roomName }</Text>
+                                            <Flex>
+                                                <i title={ navigatorData.homeRoomId !== navigatorData.enteredGuestRoom.roomId ? LocalizeText('navigator.roominfo.makehome.tooltip') : '' } onClick={ () => processAction('set_home_room') } className={ classNames('flex-shrink-0 icon icon-house-small', ((navigatorData.homeRoomId !== navigatorData.enteredGuestRoom.roomId) && 'cursor-pointer'), ((navigatorData.homeRoomId !== navigatorData.enteredGuestRoom.roomId) && 'gray')) } />
+                                            </Flex>
                                         </Flex>
                                         { navigatorData.enteredGuestRoom.showOwner &&
                                             <Flex alignItems="center" title={ LocalizeText('guide.help.common.profile.tooltip') } gap={ 1 }>
@@ -149,7 +149,7 @@ export const NavigatorRoomInfoView: FC<NavigatorRoomInfoViewProps> = props =>
                                             <Flex className="mt-1" alignItems="center" gap={ 1 }>
                                                 { navigatorData.enteredGuestRoom.tags.map(tag =>
                                                 {
-                                                    return <Text key={ tag } pointer className="bg-muted rounded p-1" onClick={ event => processAction('navigator_search_tag', tag) }>#{ tag }</Text>
+                                                    return <Text key={ tag } pointer className="text-tag rounded p-1" onClick={ event => processAction('navigator_search_tag', tag) }>#{ tag }</Text>
                                                 }) }
                                             </Flex> }
                                     </Column>
