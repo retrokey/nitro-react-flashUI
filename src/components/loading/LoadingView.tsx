@@ -29,7 +29,7 @@ export const LoadingView: FC<LoadingViewProps> = ({ isError = false, message = '
                             <div className="nitro-loading-bar-inner" style={ { width: `${ percent }%` } } />
                         </div>
                         <div className="percent">
-                            <p>{ percent.toFixed() }%</p>
+                            <p className="font-bold">{ percent.toFixed() }%</p>
                         </div>
                     </>
                 ) }
