@@ -15,12 +15,12 @@ export const InventoryCategoryEmptyView: FC<InventoryCategoryEmptyViewProps> = p
     
     return (
         <Grid { ...rest }>
-            <Column center size={ 5 } overflow="hidden">
+            <Column center size={ 6 } overflow="hidden">
                 <div className="empty-image" />
             </Column>
-            <Column justifyContent="center" size={ 7 } overflow="hidden">
-                <Text variant="danger" bold fontSize={ 5 } overflow="unset">{ title }</Text>
-                <Text overflow="auto" className="mb-4">{ desc }</Text>
+            <Column justifyContent="center" size={ 6 } overflow="hidden">
+                <Text variant="danger" bold fontSize={ 6 } overflow="unset">{ title }</Text>
+                <Text overflow="auto" fontSize={ 10 } className="mb-4">{ desc }</Text>
                 { !isTrading &&
                     <Flex gap={ 2 } position="absolute" className="bottom-2">
                         <Button className="py-3" onClick={ () => CreateLinkEvent('catalog/open') }>{ LocalizeText('inventory.open.catalog') }</Button>

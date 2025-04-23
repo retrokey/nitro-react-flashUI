@@ -1,9 +1,9 @@
 .nitro-inventory {
     height: $inventory-height;
-    min-height: $inventory-height;
+    min-height: $inventory-min-height;
     width: $inventory-width;
-    min-width: $inventory-width;
-    max-width: $inventory-width;
+    min-width: $inventory-min-max-width;
+    max-width: $inventory-min-max-width;
     color: #000;
 
     input {
