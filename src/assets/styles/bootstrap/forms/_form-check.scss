@@ -17,11 +17,22 @@
 .flash-form-check-input {
     width: 15px;
     height: 15px;
+    cursor: pointer;
     background-image: url(@/assets/flash/buttons/checkbox.png);
     -webkit-appearance: none;
 
+    &[type="radio"] {
+      background-image: url(@/assets/flash/buttons/radio.png);
+      width: 14px;
+      height: 14px
+    }
+
     &:checked {
       background-image: url(@/assets/flash/buttons/checkbox_checked.png);
+
+      &[type="radio"] {
+        background-image: url(@/assets/flash/buttons/radio_marked.png);
+      }
     }
 }
 

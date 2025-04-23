@@ -649,6 +649,7 @@ $h7-font-size:                $font-size-base * .75 !default;
 $h8-font-size:                $font-size-base * .5 !default;
 $h9-font-size:                $font-size-base * .25 !default;
 $habbo-font-size:             12px !default;
+$habbo-big-font-size:         13px !default;
 // scss-docs-end font-variables
 
 // scss-docs-start font-sizes
@@ -662,7 +663,8 @@ $font-sizes: (
   7: $h7-font-size,
   8: $h8-font-size,
   9: $h9-font-size,
-  10: $habbo-font-size
+  10: $habbo-font-size,
+  11: $habbo-big-font-size
 ) !default;
 // scss-docs-end font-sizes
 
@@ -686,7 +688,8 @@ $display-font-sizes: (
   7: 2rem,
   8: 1.5rem,
   9: 1rem,
-  10: 14px
+  10: 12px,
+  11: 13px,
 ) !default;
 
 $display-font-weight: 300 !default;

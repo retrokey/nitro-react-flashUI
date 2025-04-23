@@ -181,7 +181,7 @@ export const NavigatorRoomSettingsView: FC<{}> = props =>
     if(!roomData) return null;
 
     return (
-        <NitroCardView uniqueKey="nitro-room-settings" className="nitro-room-settings">
+        <NitroCardView uniqueKey="nitro-room-settings" className="nitro-room-settings no-resize">
             <NitroCardHeaderView headerText={ LocalizeText('navigator.roomsettings') } isInfoToHabboPages={ (currentTab === TABS[3]) ? true : false } onClickInfoHabboPages={ () => (currentTab === TABS[3]) ? CreateLinkEvent('habbopages/chat/options') : null }onCloseClick={ onClose } />
             <NitroCardTabsView>
                 { TABS.map(tab =>
