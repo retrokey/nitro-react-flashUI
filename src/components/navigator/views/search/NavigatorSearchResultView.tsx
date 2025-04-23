@@ -2,7 +2,7 @@ import { NavigatorSearchComposer, NavigatorSearchResultList } from '@nitrots/nit
 import { FC, useEffect, useState } from 'react';
 import { FaBars, FaMinus, FaPlus, FaTh, FaWindowMaximize, FaWindowRestore } from 'react-icons/fa';
 import { LocalizeText, NavigatorSearchResultViewDisplayMode, SendMessageComposer } from '../../../../api';
-import { AutoGrid, AutoGridProps, Column, Flex, Grid, Text } from '../../../../common';
+import { AutoGrid, AutoGridProps, Column, Flex, Grid, Text, Base } from '../../../../common';
 import { useNavigator } from '../../../../hooks';
 import { NavigatorSearchResultItemView } from './NavigatorSearchResultItemView';
 
@@ -16,6 +16,9 @@ export const NavigatorSearchResultView: FC<NavigatorSearchResultViewProps> = pro
     const { searchResult = null, ...rest } = props;
     const [ isExtended, setIsExtended ] = useState(true);
     const [ displayMode, setDisplayMode ] = useState<number>(0);
+    const [ selectedRoomId, setSelectedRoomId ] = useState<number | null>(null);
+    const [ hoveredRoomId, setHoveredRoomId ] = useState<number | null>(null);
+    const [ isPopoverActive, setIsPopoverActive ] = useState<boolean>(false);
 
     const { topLevelContext = null } = useNavigator();
 
@@ -66,18 +69,18 @@ export const NavigatorSearchResultView: FC<NavigatorSearchResultViewProps> = pro
                     <div className="nav-category"> { LocalizeText(getResultTitle()) }</div>
                 </Flex>
                 <Flex gap={ 2 }>
-                    { (displayMode === NavigatorSearchResultViewDisplayMode.LIST) && <FaTh className="text-secondary fa-icon" onClick={ toggleDisplayMode } /> }
-                    { (displayMode >= NavigatorSearchResultViewDisplayMode.THUMBNAILS) && <FaBars className="text-secondary fa-icon" onClick={ toggleDisplayMode } /> }
-                    { (searchResult.action > 0) && (searchResult.action === 1) && <FaWindowMaximize className="text-secondary fa-icon" onClick={ showMore } /> }
-                    { (searchResult.action > 0) && (searchResult.action !== 1) && <FaWindowRestore className="text-secondary fa-icon" onClick={ showMore } /> }
+                    { (displayMode === NavigatorSearchResultViewDisplayMode.LIST) && <Base className="icon icon-thumbnail-view" onClick={ toggleDisplayMode } /> }
+                    { (displayMode >= NavigatorSearchResultViewDisplayMode.THUMBNAILS) && <Base className="icon icon-inline-view" onClick={ toggleDisplayMode } /> }
+                    { (searchResult.action > 0) && (searchResult.action === 1) && <Base className="icon icon-show-more" onClick={ showMore } /> }
+                    { (searchResult.action > 0) && (searchResult.action !== 1) && <Base className="icon icon-show-more active" onClick={ showMore } /> }
                 </Flex>
             </Flex> { isExtended &&
                 <>
                     {
                         gridHasTwoColumns ? <AutoGrid columnCount={ 3 } { ...rest } columnMinWidth={ 110 } columnMinHeight={ 130 } className="mx-2">
-                            { searchResult.rooms.length > 0 && searchResult.rooms.map((room, index) => <NavigatorSearchResultItemView key={ index } roomData={ room } thumbnail={ true } />) }
+                            { searchResult.rooms.length > 0 && searchResult.rooms.map((room, index) => <NavigatorSearchResultItemView key={ index } roomData={ room } thumbnail={ true } isPopoverActive={ isPopoverActive } setIsPopoverActive={ setIsPopoverActive } selectedRoomId={ selectedRoomId } setSelectedRoomId={ setSelectedRoomId }/>) }
                         </AutoGrid> : <Grid columnCount={ 1 } className="navigator-grid" gap={ 0 }>
-                            { searchResult.rooms.length > 0 && searchResult.rooms.map((room, index) => <NavigatorSearchResultItemView key={ index } roomData={ room } />) }
+                            { searchResult.rooms.length > 0 && searchResult.rooms.map((room, index) => <NavigatorSearchResultItemView key={ index } roomData={ room } isPopoverActive={ isPopoverActive } setIsPopoverActive={ setIsPopoverActive } selectedRoomId={ selectedRoomId } setSelectedRoomId={ setSelectedRoomId } />) }
                         </Grid>
                     }
                 </>

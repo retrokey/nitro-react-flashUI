@@ -17,6 +17,8 @@
 
                 &:nth-child(odd) {
                     background-color: #daecfd;
+                    border-top-right-radius: 6px;
+                    border-bottom-right-radius: 6px;
                 }
 
                 &:nth-child(even) {
@@ -217,7 +219,7 @@
 }
 
 .room-info {
-    width: 275px;
+    width: 360px;
     color: #000;
     image-rendering: pixelated;
 
